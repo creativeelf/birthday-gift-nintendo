@@ -1398,6 +1398,16 @@ But real talk — happy birthday! You deserve every star this year. Here's a lit
     if (g('input-code')) document.getElementById('display-code').textContent = g('input-code');
     document.getElementById('edit-panel').classList.remove('open');
   }
+
+  // ── URL PARAMS ──
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    if (code) {
+      document.getElementById('display-code').textContent = code;
+      document.getElementById('input-code').value = code;
+    }
+  })();
 </script>
 </body>
 </html>
