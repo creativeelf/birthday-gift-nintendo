@@ -751,10 +751,13 @@
   }
 
   .photo-slot img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
+    position: absolute;
+    width: 100%;
+    height: 120%;
     object-fit: cover;
     display: none;
+    top: -10%;
+    transition: transform 0.1s ease-out;
   }
 
   .photo-slot img.loaded { display: block; }
@@ -1389,6 +1392,18 @@ But real talk — happy birthday! You deserve every star this year. Here's a lit
       document.getElementById('display-code').textContent = code;
       document.getElementById('input-code').value = code;
     }
+  })();
+
+  // ── PARALLAX PHOTO ──
+  (function() {
+    const giftScreen = document.getElementById('gift-screen');
+    const photoImg = document.querySelector('.photo-slot img');
+
+    giftScreen.addEventListener('scroll', function() {
+      const scrollY = giftScreen.scrollTop;
+      const offset = scrollY * 0.15;
+      photoImg.style.transform = `translateY(${offset}px)`;
+    });
   })();
 </script>
 </body>
